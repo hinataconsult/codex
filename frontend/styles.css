@@ -1,0 +1,269 @@
+:root {
+  color-scheme: light dark;
+  --primary: #0060df;
+  --secondary: #f0f4ff;
+  --border: #ccd5ff;
+  --bg: #ffffff;
+  --text: #1f2933;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--primary), #35a0ff);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: background 0.2s ease;
+}
+
+nav button.active,
+nav button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.search-panel {
+  background: #f9fbff;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+input,
+select,
+textarea {
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 96, 223, 0.2);
+}
+
+button.secondary {
+  background: #e2e8f0;
+  color: #1f2933;
+}
+
+button.primary {
+  background: var(--primary);
+}
+
+#minutes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.07);
+}
+
+#minutes-table th,
+#minutes-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+#minutes-table tbody tr {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#minutes-table tbody tr:hover {
+  background: #f1f5fd;
+}
+
+#detail-panel {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.summary-grid article {
+  background: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: inset 0 0 0 1px #e2e8f0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: #f0f4ff;
+  color: #334155;
+}
+
+#detail-panel h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#history-list {
+  margin-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.history-entry {
+  padding: 1rem;
+  border-radius: 0.8rem;
+  background: #f8fafc;
+}
+
+.history-entry pre {
+  background: white;
+  border-radius: 0.6rem;
+  padding: 0.8rem;
+  overflow-x: auto;
+}
+
+.dialog-open {
+  display: block;
+}
+
+#reminder-form {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .grid-4,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
