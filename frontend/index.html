@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>議事録自動生成・管理アプリ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>議事録自動生成・管理アプリ</h1>
+      <nav>
+        <button id="nav-home" class="active">ホーム</button>
+        <button id="nav-new">新規作成</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home-view" class="view active">
+        <div class="search-panel">
+          <h2>過去議事録一覧</h2>
+          <div class="filters">
+            <label>
+              タイトル
+              <input type="text" id="filter-title" placeholder="キーワード" />
+            </label>
+            <label>
+              参加者
+              <input type="text" id="filter-participant" placeholder="名前" />
+            </label>
+            <label>
+              開始日
+              <input type="date" id="filter-start" />
+            </label>
+            <label>
+              終了日
+              <input type="date" id="filter-end" />
+            </label>
+            <button id="filter-search">検索</button>
+            <button id="filter-reset" class="secondary">リセット</button>
+            <button id="export-csv" class="secondary">CSVエクスポート</button>
+          </div>
+        </div>
+        <table id="minutes-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>タイトル</th>
+              <th>会議日</th>
+              <th>参加者</th>
+              <th>作成日時</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="detail-panel" class="hidden"></div>
+      </section>
+
+      <section id="new-view" class="view">
+        <h2>新規議事録作成</h2>
+        <form id="minutes-form">
+          <div class="form-grid">
+            <label>タイトル<input type="text" id="form-title" required /></label>
+            <label>会議日<input type="date" id="form-date" required /></label>
+            <label>参加者（カンマ区切り）<input type="text" id="form-participants" /></label>
+            <label>
+              入力モード
+              <select id="form-mode">
+                <option value="free">自由入力</option>
+                <option value="bullet">箇条書き</option>
+              </select>
+            </label>
+          </div>
+          <label class="full-width">
+            元テキスト
+            <textarea id="form-text" rows="8" placeholder="議事録の下書きやメモを貼り付けてください"></textarea>
+          </label>
+          <div class="actions">
+            <button type="button" id="generate-summary">要約開始</button>
+            <span id="summary-length"></span>
+          </div>
+          <div id="summary-editor" class="grid-4 hidden">
+            <div>
+              <h3>会議の目的</h3>
+              <textarea id="summary-purpose" rows="6"></textarea>
+            </div>
+            <div>
+              <h3>決定事項</h3>
+              <textarea id="summary-decisions" rows="6"></textarea>
+            </div>
+            <div>
+              <h3>宿題（アクションアイテム）</h3>
+              <textarea id="summary-actions" rows="6"></textarea>
+            </div>
+            <div>
+              <h3>議事要旨</h3>
+              <textarea id="summary-digest" rows="6"></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="submit" class="primary">保存</button>
+            <button type="reset" class="secondary">クリア</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <small>© 2025 議事録自動生成・管理アプリ</small>
+    </footer>
+
+    <dialog id="message-dialog">
+      <p id="dialog-message"></p>
+      <button id="dialog-close">閉じる</button>
+    </dialog>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
